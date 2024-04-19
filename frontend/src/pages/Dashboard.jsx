@@ -18,7 +18,7 @@ export const Dashboard = () => {
     } else {
       // Fetch balance if token exists
       axios
-        .get(import.meta.env.VITE_API_URL + "/api/v1/account/balance", {
+        .get("https://paytm-like-app-6cs3.onrender.com" + "/api/v1/account/balance", {
           headers: {
             Authorization: "Bearer " + userToken,
           },
