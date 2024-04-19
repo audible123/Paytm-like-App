@@ -53,7 +53,7 @@ export const SendMoney = () => {
               <button
                 onClick={async () => {
                   const res = await axios.post(
-                    import.meta.env.VITE_API_URL +
+                    "https://paytm-like-app-6cs3.onrender.com" +
                       "/api/v1/account/transfer",
                     {
                       to: id,
