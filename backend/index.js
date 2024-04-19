@@ -8,7 +8,20 @@ const app = express();
 dotenv.config();
 
 app.use(express.json());
-app.use(cors());
+
+app.use(cors(
+
+{
+
+origin: ["https://walletwave.vercel.app/"], methods: ["POST", "GET"],
+
+methods: [ "POST" , "GET" ] ,
+
+credentials: true
+
+}
+
+));
 
 app.use("/api/v1", mainRouter);
 
