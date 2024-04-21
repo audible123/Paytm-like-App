@@ -13,7 +13,7 @@ app.use(cors(
 
 {
 
-origin: ["https://walletwave.vercel.app/"], methods: ["POST", "GET"],
+origin: ["https://walletwave.vercel.app"], 
 
 methods: [ "POST" , "GET" ] ,
 
