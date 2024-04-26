@@ -14,11 +14,13 @@ export const PaymentStatus = () => {
       navigate("/signin"); // Redirect to sign-in page if token doesn't exist
     } else {
       const t = setTimeout(() => {
-        navigate("/dashboard");
+        navigate("/home");
       }, 3000);
       return () => clearTimeout(t);
     }
   }, []);
+
+  console.log("hi");
 
   return (
     <div className="flex justify-center items-center w-screen h-screen">

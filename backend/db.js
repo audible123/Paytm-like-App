@@ -7,31 +7,31 @@ const userSchema = new mongoose.Schema({
     unique: true,
     trim: true,
     lowercase: true,
-    minLength: 3,
-    maxLength: 30,
+    minlength: 3,
+    maxlength: 30,
   },
   password: {
     type: String,
     required: true,
-    minLength: 6,
+    minlength: 6,
   },
   firstName: {
     type: String,
     required: true,
     trim: true,
-    maxLength: 50,
+    maxlength: 50,
   },
   lastName: {
     type: String,
     required: true,
     trim: true,
-    maxLength: 50,
+    maxlength: 50,
   },
 });
 
 const accountSchema = new mongoose.Schema({
   userId: {
-    type: mongoose.Schema.Types.ObjectId, // Reference to User model
+    type: mongoose.Schema.Types.ObjectId, 
     ref: "User",
     required: true,
   },
@@ -41,10 +41,37 @@ const accountSchema = new mongoose.Schema({
   },
 });
 
+const transactionSchema = new mongoose.Schema({
+  senderId: {
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: "User",
+    required: true,
+  },
+  recipientId: {
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: "User",
+    required: true,
+  },
+  amount: {
+    type: Number,
+    required: true,
+  },
+  transactionType: {
+    type: String,
+    enum: ['sent', 'received'],
+    required: true,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
 const Account = mongoose.model("Account", accountSchema);
 const User = mongoose.model("User", userSchema);
 
 module.exports = {
   User,
   Account,
+  Transaction: mongoose.model("Transaction", transactionSchema),
 };

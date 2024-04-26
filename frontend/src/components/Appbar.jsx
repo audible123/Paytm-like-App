@@ -33,18 +33,18 @@ export const Appbar = () => {
 
   return (
     <div className="shadow h-14 flex justify-between items-center md:px-10">
-      <Link to={"/dashboard"}>
-        <div className="flex flex-col justify-center h-full ml-4 font-bold">
-          PayTM App
+      <Link to={"/home"}>
+        <div className="flex flex-col justify-center text-[#FF8C8C] h-full ml-4 font-bold">
+          WALLETWAVE
         </div>
       </Link>
       <div className="flex items-center justify-center gap-2">
         <Button label={"Sign Out"} onClick={signOutHandler} />
-        <div className="flex flex-col justify-center h-full mr-4">
+        <div className="flex flex-col justify-center h-full mr-4 xs:text-xs">
           {user?.firstName}
         </div>
         <div className="rounded-full h-10 w-10 p-4 bg-slate-200 flex justify-center mr-2">
-          <div className="flex flex-col justify-center h-full text-xl">
+          <div className="flex flex-col justify-center h-full text-xl xs:text-xs">
             {user?.firstName[0].toUpperCase()}
           </div>
         </div>

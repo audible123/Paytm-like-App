@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Appbar } from "../components/Appbar";
 import { Balance } from "../components/Balance";
 import { Users } from "../components/Users";
 import axios from "axios";
@@ -34,11 +33,19 @@ export const Dashboard = () => {
 
   return (
     <div>
-      <Appbar />
-      <div className="m-8">
-        <Balance value={bal} />
-        <Users />
+      <div className="flex flex-col py-10 px-16 h-screen overflow-y-auto w-full">
+        <div className="flex space-x-8 py-6 justify-center ">
+          <div className="flex flex-col rounded-md border lg:w-[600px] lg:h-[350px] p-8 justify-center shadow-lg">
+            <div className="font-bold lg:text-6xl">Your balance</div>
+            <p className="text-[#f36b6b] lg:text-4xl m-3 font-bold">Rs {bal}</p>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
+
+
+// <div className="m-8">
+//         <Balance value={bal} />
+//       </div>

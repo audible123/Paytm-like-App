@@ -17,7 +17,7 @@ export const Signin = () => {
 
     // Check if token exists in local storage
     if (userToken) {
-      navigate("/dashboard"); // Redirect to sign-in page if token doesn't exist
+      navigate("/home"); // Redirect to sign-in page if token doesn't exist
     }
   }, []);
 
@@ -52,7 +52,7 @@ export const Signin = () => {
                   }
                 );
                 localStorage.setItem("token", response.data.token);
-                navigate("/dashboard");
+                navigate("/home");
               }}
               label={"Sign in"}
             />
