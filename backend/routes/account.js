@@ -69,21 +69,13 @@ router.post("/transfer", authMiddleware, async (req, res) => {
     recipientAccount.balance += amount;
     await recipientAccount.save({ session });
 
-    // Create transaction record
+    // Create transaction record for the sender
     const transaction = await Transaction.create({
       senderId: req.userId,
       recipientId: to,
       amount,
       transactionType: 'sent', // Marking the transaction as sent
     });
-
-    // Create a new transaction record for the recipient to indicate receiving
-    // await Transaction.create({
-    //   senderId: req.userId,
-    //   recipientId: to,
-    //   amount,
-    //   transactionType: 'received', // Marking the transaction as received
-    // });
 
     // Commit Transaction
     await session.commitTransaction();
@@ -114,7 +106,7 @@ router.get("/transactions", authMiddleware, async (req, res) => {
 
     // Map over transactions to add transactionType field
     const transactionsWithTypes = transactions.map(transaction => ({
-      ...transaction._doc,
+      ...transaction.toObject(), // Convert Mongoose document to JavaScript object
       transactionType: transaction.senderId.toString() === req.userId ? 'sent' : 'received',
     }));
 
