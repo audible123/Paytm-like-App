@@ -78,12 +78,12 @@ router.post("/transfer", authMiddleware, async (req, res) => {
     });
 
     // Create a new transaction record for the recipient to indicate receiving
-    await Transaction.create({
-      senderId: req.userId,
-      recipientId: to,
-      amount,
-      transactionType: 'received', // Marking the transaction as received
-    });
+    // await Transaction.create({
+    //   senderId: req.userId,
+    //   recipientId: to,
+    //   amount,
+    //   transactionType: 'received', // Marking the transaction as received
+    // });
 
     // Commit Transaction
     await session.commitTransaction();
